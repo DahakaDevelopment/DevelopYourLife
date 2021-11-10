@@ -1,5 +1,5 @@
 ﻿#include "Functions.h"
-
+// test
 int _stateMenu;
 
 void Menu() {
