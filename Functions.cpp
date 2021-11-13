@@ -1,5 +1,8 @@
 #include "Functions.h"
 
+SetConsoleCP(1251); // установка кодовой страницы win-cp 1251 в поток ввода
+SetConsoleOutputCP(1251); // утсановка кодов страницы win-cp 1251 в поток вывода
+
 void DataEntry(Data* (&d), int& n)
 {
 	cout << "Введите количество данных: ";
