@@ -196,6 +196,22 @@ void DataSorting(Data* d, int n)
 	cout << "ƒанные отсортированы!" << endl;
 }
 
+void DataSelectionSorting(Data* (&d), int n)
+{
+	int smallest_id;
+	//сортировка выбором
+	for (int i = 0; i < n; i++) {
+		smallest_id = i;
+		for (int j = i + 1; j < n; j++) {
+			if (d[j]._initial.surname < d[smallest_id]._initial.surname)
+				smallest_id = j;
+		}
+		swap(d[smallest_id], d[i]);
+	}
+
+	cout << "ƒанные отсортированы!" << endl;
+}
+
 void SavingData(Data* d, int n, string fileName)
 {
 	// создаетс€ поток дл€ записи

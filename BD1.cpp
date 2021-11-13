@@ -1,5 +1,5 @@
 ﻿#include "Functions.h"
-// test
+
 int _stateMenu;
 
 void Menu() {
@@ -13,6 +13,7 @@ void Menu() {
 		<< "(6) Добавление" << endl
 		<< "(7) Сортировка по фамилии" << endl
 		<< "(8) Сохранение в Input.txt" << endl
+		//<< "(9) Сортировка выбором" << endl
 		<< "Ваш выбор: ";
 	cin >> _stateMenu;
 }
@@ -136,12 +137,38 @@ int main() {
 		case 7:
 			system("cls");
 
-			if (amountOfData != 0) {
-				DataSorting(d, amountOfData);
-			}
-			else
-				cout << "Данные пусты!" << endl;
+			int metod_menu;
 
+			cout << "Выберите метод сортировки: " << endl;
+			cout << "(1) Пузырьком" << endl;
+			cout << "(2) Выбором" << endl;
+			cin >> metod_menu;
+
+			switch (metod_menu)
+			{
+			case 1:
+				system("cls");
+
+				if (amountOfData != 0) {
+					DataSorting(d, amountOfData);
+				}
+				else
+					cout << "Данные пусты!" << endl;
+				break;
+
+			case 2:
+				system("cls");
+
+				if (amountOfData != 0) {
+					DataSelectionSorting(d, amountOfData);
+				}
+				else
+					cout << "Данные пусты!" << endl;
+				break;
+			default:
+				system("cls");
+				cout << "Неверно введен номер действия!" << endl;
+			}
 			system("pause");
 			system("cls");
 			Menu();
