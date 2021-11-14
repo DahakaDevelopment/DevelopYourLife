@@ -1,8 +1,5 @@
 #include "Functions.h"
 
-SetConsoleCP(1251); // установка кодовой страницы win-cp 1251 в поток ввода
-SetConsoleOutputCP(1251); // утсановка кодов страницы win-cp 1251 в поток вывода
-
 void DataEntry(Data* (&d), int& n)
 {
 	cout << "¬ведите количество данных: ";
@@ -202,6 +199,7 @@ void DataSorting(Data* d, int n)
 void DataSelectionSorting(Data* (&d), int n)
 {
 	int smallest_id;
+
 	//сортировка выбором
 	for (int i = 0; i < n; i++) {
 		smallest_id = i;
@@ -210,6 +208,40 @@ void DataSelectionSorting(Data* (&d), int n)
 				smallest_id = j;
 		}
 		swap(d[smallest_id], d[i]);
+	}
+
+	cout << "ƒанные отсортированы!" << endl;
+}
+
+void DataSortingYbivanie(Data* d, int n) {
+	//¬ременна€ переменна€
+	Data buf;
+
+	//сортировка методом пузырька
+	for (int i = 0; i < n; i++) {
+		for (int j = i + 1; j < n; j++) {
+			if (d[i]._initial.surname < d[j]._initial.surname) {
+				Copy(buf, d[j]);
+				Copy(d[j], d[i]);
+				Copy(d[i], buf);
+			}
+		}
+	}
+
+	cout << "ƒанные отсортированы!" << endl;
+}
+
+void DataSelectionSortingYbivanie(Data* (&d), int n) {
+	int higher_id;
+
+	//сортировка выбором
+	for (int i = 0; i < n; i++) {
+		higher_id = i;
+		for (int j = i + 1; j < n; j++) {
+			if (d[j]._initial.surname > d[higher_id]._initial.surname)
+				higher_id = j;
+		}
+		swap(d[higher_id], d[i]);
 	}
 
 	cout << "ƒанные отсортированы!" << endl;
