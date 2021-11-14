@@ -136,12 +136,14 @@ int main() {
 			////////////////////////////////////
 		case 7:
 			system("cls");
-
 			int metod_menu;
 
 			cout << "Выберите метод сортировки: " << endl;
-			cout << "(1) Пузырьком" << endl;
-			cout << "(2) Выбором" << endl;
+			cout << "(1) Пузырьком (по возрастанию)" << endl;
+			cout << "(2) Пузырьком (по убыванию)" << endl;
+			cout << "(3) Выбором (по возрастанию)" << endl;
+			cout << "(4) Выбором (по убыванию)" << endl;
+
 			cin >> metod_menu;
 
 			switch (metod_menu)
@@ -160,11 +162,32 @@ int main() {
 				system("cls");
 
 				if (amountOfData != 0) {
+					DataSortingYbivanie(d, amountOfData);
+				}
+				else
+					cout << "Данные пусты!" << endl;
+				break;
+
+			case 3:
+				system("cls");
+
+				if (amountOfData != 0) {
 					DataSelectionSorting(d, amountOfData);
 				}
 				else
 					cout << "Данные пусты!" << endl;
 				break;
+
+			case 4:
+				system("cls");
+
+				if (amountOfData != 0) {
+					DataSelectionSortingYbivanie(d, amountOfData);
+				}
+				else
+					cout << "Данные пусты!" << endl;
+				break;
+
 			default:
 				system("cls");
 				cout << "Неверно введен номер действия!" << endl;
