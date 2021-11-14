@@ -1,19 +1,19 @@
-#include "Functions.h"
+ï»¿#include "Functions.h"
 
 void DataEntry(Data* (&d), int& n)
 {
-	cout << "Ââåäèòå êîëè÷åñòâî äàííûõ: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ñ…: ";
 	cin >> n;
 
 	d = new Data[n];
 
 	for (int i = 0; i < n; i++) {
-		cout << "Ââåäèòå ÔÈÎ: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
 		cin >> d[i]._initial.surname;
 		cin >> d[i]._initial.name;
 		cin >> d[i]._initial.patronymic;
 
-		cout << "Ââåäèòå äàòó (äåíü, ìåñÿö, ãîä): ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ (Ð´ÐµÐ½ÑŒ, Ð¼ÐµÑÑÑ†, Ð³Ð¾Ð´): ";
 		cin >> d[i]._date.day;
 		cin >> d[i]._date.month;
 		cin >> d[i]._date.year;
@@ -25,7 +25,7 @@ void DataEntry(Data* (&d), int& n)
 
 void ReadingData(Data* (&d), int& n, string fileName)
 {
-	//ñîçäà¸ì ïîòîê äëÿ ÷òåíèÿ
+	//ÑÐ¾Ð·Ð´Ð°Ñ‘Ð¼ Ð¿Ð¾Ñ‚Ð¾Ðº Ð´Ð»Ñ Ñ‡Ñ‚ÐµÐ½Ð¸Ñ
 	ifstream reading(fileName);
 
 	if (reading) {
@@ -42,19 +42,19 @@ void ReadingData(Data* (&d), int& n, string fileName)
 			reading >> d[i]._date.month;
 			reading >> d[i]._date.year;
 		}
-		cout << "Äàííûå ñ÷èòàíû!" << endl;
+		cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ ÑÑ‡Ð¸Ñ‚Ð°Ð½Ñ‹!" << endl;
 	}
 	else
-		cout << "Îøèáêà îòêðûòèÿ ôàéëà!" << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°!" << endl;
 	reading.close();
 }
 
 void Print(Data* d, int n)
 {
 	for (int i = 0; i < n; i++) {
-		cout << "Äàííûå ¹" << i + 1 << endl;
-		cout << "ÔÈÎ: " << d[i]._initial.surname << " " << d[i]._initial.name << " " << d[i]._initial.patronymic << endl;
-		cout << "Äàòà: ";
+		cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ â„–" << i + 1 << endl;
+		cout << "Ð¤Ð˜Ðž: " << d[i]._initial.surname << " " << d[i]._initial.name << " " << d[i]._initial.patronymic << endl;
+		cout << "Ð”Ð°Ñ‚Ð°: ";
 		if (d[i]._date.day <= 9)
 			cout << "0" << d[i]._date.day << " ";
 		else
@@ -72,51 +72,51 @@ void DataChange(Data* (&d), int n)
 
 {
 	int _n;
-	cout << "Ââåäèòå íîìåð ýëåìåíòà (îò 1 äî " << n << "): ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° (Ð¾Ñ‚ 1 Ð´Ð¾ " << n << "): ";
 	cin >> _n;
 	_n--;
 	system("cls");
 
-	// ïðîâåðêà, ÷òî ââåëè ïðàâèëüíîå çíà÷åíèå
+	// Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ°, Ñ‡Ñ‚Ð¾ Ð²Ð²ÐµÐ»Ð¸ Ð¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	if (_n >= 0 && _n < n) {
-		cout << "Ââåäèòå ÔÈÎ: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
 		cin >> d[_n]._initial.surname;
 		cin >> d[_n]._initial.name;
 		cin >> d[_n]._initial.patronymic;
 
-		cout << "Ââåäèòå äàòó: ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ: ";
 		cin >> d[_n]._date.day;
 		cin >> d[_n]._date.month;
 		cin >> d[_n]._date.year;
 
 		system("cls");
 
-		cout << "Äàííûå èçìåíåíû!" << endl;
+		cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ñ‹!" << endl;
 	}
 	else
-		cout << "Íîìåð ââåä¸í íåâåðíî!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ð²Ð²ÐµÐ´Ñ‘Ð½ Ð½ÐµÐ²ÐµÑ€Ð½Ð¾!" << endl;
 }
 
 void DeleteData(Data* (&d), int& n)
 {
 	int _n;
-	cout << "Ââåäèòå íîìåð ýëåìåíòà (îò 1 äî " << n << "): ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° (Ð¾Ñ‚ 1 Ð´Ð¾ " << n << "): ";
 	cin >> _n;
 	_n--;
 	system("cls");
 
 	if (_n >= 0 && _n < n) {
-		// âðåìåííûé ìàññèâ
+		// Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²
 		Data* buf = new Data[n];
 
 		Copy(buf, d, n);
 
-		// âûäåëÿåì íîâóþ ïàìÿòü
+		// Ð²Ñ‹Ð´ÐµÐ»ÑÐµÐ¼ Ð½Ð¾Ð²ÑƒÑŽ Ð¿Ð°Ð¼ÑÑ‚ÑŒ
 		--n;
 		d = new Data[n];
 		int q = 0;
 
-		// çàïîëíÿåì íåóäàëåííûå äàííûå
+		// Ð·Ð°Ð¿Ð¾Ð»Ð½ÑÐµÐ¼ Ð½ÐµÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ
 		for (int i = 0; i <= n; i++) {
 			if (i != _n) {
 				d[q] = buf[i];
@@ -126,10 +126,10 @@ void DeleteData(Data* (&d), int& n)
 
 		system("cls");
 		delete[]buf;
-		cout << "Äàííûå óäàëåíû!" << endl;
+		cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ ÑƒÐ´Ð°Ð»ÐµÐ½Ñ‹!" << endl;
 	}
 	else
-		cout << "Íîìåð ââåä¸í íåâåðíî!" << endl;
+		cout << "ÐÐ¾Ð¼ÐµÑ€ Ð²Ð²ÐµÐ´Ñ‘Ð½ Ð½ÐµÐ²ÐµÑ€Ð½Ð¾!" << endl;
 }
 
 void Copy(Data* (&d_n), Data* (&d_o), int n)
@@ -152,37 +152,37 @@ void Copy(Data& d_n, Data& d_o)
 
 void AddDate(Data* (&d), int& n)
 {
-	//âðåìåííûé ìàññèâ äàííûõ
+	//Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ð´Ð°Ð½Ð½Ñ‹Ñ…
 	Data* buf;
 	buf = new Data[n];
 
-	//ñîõðàíèå äàííûõ âî âðåìåííûé ìàññèâ
+	//ÑÐ¾Ñ…Ñ€Ð°Ð½Ð¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð²Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð²
 	Copy(buf, d, n);
 
-	//âûäåëÿåì íîâóþ ïàìÿòü
+	//Ð²Ñ‹Ð´ÐµÐ»ÑÐµÐ¼ Ð½Ð¾Ð²ÑƒÑŽ Ð¿Ð°Ð¼ÑÑ‚ÑŒ
 	n++;
 	d = new Data[n];
 
-	//âîçâðàùàåì äàííûå
+	//Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ
 	Copy(d, buf, --n);
 
-	cout << "Ââåäèòå ÔÈÎ: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¤Ð˜Ðž: ";
 	cin >> d[n]._initial.surname >> d[n]._initial.name >> d[n]._initial.patronymic;
 
-	cout << "Ââåäèòå äàòó: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð°Ñ‚Ñƒ: ";
 	cin >> d[n]._date.day >> d[n]._date.month >> d[n]._date.year;
 
 	system("cls");
-	cout << "Äàííûå äîáàâëåíû!" << endl;
+	cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ñ‹!" << endl;
 	delete[]buf;
 }
 
 void DataSorting(Data* d, int n)
 {
-	//Âðåìåííàÿ ïåðåìåííàÿ
+	//Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ
 	Data buf;
 
-	//ñîðòèðîâêà ìåòîäîì ïóçûðüêà
+	//ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ Ð¿ÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ°
 	for (int i = 0; i < n; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (d[i]._initial.surname > d[j]._initial.surname) {
@@ -193,14 +193,14 @@ void DataSorting(Data* d, int n)
 		}
 	}
 
-	cout << "Äàííûå îòñîðòèðîâàíû!" << endl;
+	cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹!" << endl;
 }
 
 void DataSelectionSorting(Data* (&d), int n)
 {
 	int smallest_id;
 
-	//ñîðòèðîâêà âûáîðîì
+	//ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼
 	for (int i = 0; i < n; i++) {
 		smallest_id = i;
 		for (int j = i + 1; j < n; j++) {
@@ -210,14 +210,14 @@ void DataSelectionSorting(Data* (&d), int n)
 		swap(d[smallest_id], d[i]);
 	}
 
-	cout << "Äàííûå îòñîðòèðîâàíû!" << endl;
+	cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹!" << endl;
 }
 
 void DataSortingYbivanie(Data* d, int n) {
-	//Âðåìåííàÿ ïåðåìåííàÿ
+	//Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ
 	Data buf;
 
-	//ñîðòèðîâêà ìåòîäîì ïóçûðüêà
+	//ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¼ÐµÑ‚Ð¾Ð´Ð¾Ð¼ Ð¿ÑƒÐ·Ñ‹Ñ€ÑŒÐºÐ°
 	for (int i = 0; i < n; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (d[i]._initial.surname < d[j]._initial.surname) {
@@ -228,13 +228,13 @@ void DataSortingYbivanie(Data* d, int n) {
 		}
 	}
 
-	cout << "Äàííûå îòñîðòèðîâàíû!" << endl;
+	cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹!" << endl;
 }
 
 void DataSelectionSortingYbivanie(Data* (&d), int n) {
 	int higher_id;
 
-	//ñîðòèðîâêà âûáîðîì
+	//ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€Ð¾Ð¼
 	for (int i = 0; i < n; i++) {
 		higher_id = i;
 		for (int j = i + 1; j < n; j++) {
@@ -244,16 +244,16 @@ void DataSelectionSortingYbivanie(Data* (&d), int n) {
 		swap(d[higher_id], d[i]);
 	}
 
-	cout << "Äàííûå îòñîðòèðîâàíû!" << endl;
+	cout << "Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ñ‹!" << endl;
 }
 
 void SavingData(Data* d, int n, string fileName)
 {
-	// ñîçäàåòñÿ ïîòîê äëÿ çàïèñè
-	// îòêðûâàåò fileName è äåëàåò òàê, ÷òîáû îí áûë ïóñòîé
+	// ÑÐ¾Ð·Ð´Ð°ÐµÑ‚ÑÑ Ð¿Ð¾Ñ‚Ð¾Ðº Ð´Ð»Ñ Ð·Ð°Ð¿Ð¸ÑÐ¸
+	// Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÑ‚ fileName Ð¸ Ð´ÐµÐ»Ð°ÐµÑ‚ Ñ‚Ð°Ðº, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾Ð½ Ð±Ñ‹Ð» Ð¿ÑƒÑÑ‚Ð¾Ð¹
 	ofstream record(fileName, ios::out);
 
-	// óñëîâèå: åñëè ôàéë îòêðûëñÿ
+	// ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ: ÐµÑÐ»Ð¸ Ñ„Ð°Ð¹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ð»ÑÑ
 	if (record) {
 		record << n << endl;
 
@@ -271,7 +271,7 @@ void SavingData(Data* d, int n, string fileName)
 		}
 	}
 	else
-		cout << "Îøèáêà îòêðûòèÿ ôàéëà!" << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°!" << endl;
 
 	record.close();
 }
