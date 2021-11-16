@@ -274,6 +274,7 @@ void DataBinarySearch(Data* d, string value, int n) {
 			else
 				cout << d[mid]._date.month << " " << d[mid]._date.year << endl;
 			Copy(d, buf, n);
+			delete[]buf;
 			return;
 
 		}
@@ -285,6 +286,7 @@ void DataBinarySearch(Data* d, string value, int n) {
 	}
 	cout << "Данных не найдено!" << endl;
 	Copy(d, buf, n);
+	delete[]buf;
 }
 
 void SavingData(Data* d, int n, string fileName)

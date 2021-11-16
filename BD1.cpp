@@ -12,8 +12,8 @@ void Menu() {
 		<< "(5) Удаление всех файлов" << endl
 		<< "(6) Добавление" << endl
 		<< "(7) Сортировка по фамилии" << endl
-		<< "(8) Сохранение в Input.txt" << endl
-		<< "(9) Поиск по фамилии" << endl
+		<< "(8) Поиск по фамилии" << endl
+		<< "(9) Сохранение в файле" << endl
 		<< "Ваш выбор: ";
 	cin >> _stateMenu;
 }
@@ -204,13 +204,10 @@ int main() {
 		case 8:
 			system("cls");
 
-			//cout << "Введите название файла: ";
-			//cin >> fileName;
-			fileName = "Input.txt";
-
 			if (amountOfData != 0) {
-				SavingData(d, amountOfData, fileName);
-				cout << "Данные сохранены!" << endl;
+				cout << "Введите фамилию:" << endl;
+				cin >> surname;
+				DataBinarySearch(d, surname, amountOfData);
 			}
 			else
 				cout << "Данные пусты!" << endl;
@@ -223,10 +220,13 @@ int main() {
 		case 9:
 			system("cls");
 
+			cout << "Введите название файла: ";
+			cin >> fileName;
+			//fileName = "Input.txt";
+
 			if (amountOfData != 0) {
-				cout << "Введите фамилию:" << endl;
-				cin >> surname;
-				DataBinarySearch(d, surname, amountOfData);
+				SavingData(d, amountOfData, fileName);
+				cout << "Данные сохранены!" << endl;
 			}
 			else
 				cout << "Данные пусты!" << endl;
