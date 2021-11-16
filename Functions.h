@@ -35,5 +35,6 @@ void DataSorting(Data *d, int n);
 void DataSortingYbivanie(Data* d, int n);
 void DataSelectionSorting(Data* (&d), int n);
 void DataSelectionSortingYbivanie(Data* (&d), int n);
+void DataBinarySearch(Data* d, string value, int n);
 void SavingData(Data* d, int n, string fileName);
 

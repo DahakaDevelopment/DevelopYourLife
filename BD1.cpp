@@ -13,7 +13,7 @@ void Menu() {
 		<< "(6) Добавление" << endl
 		<< "(7) Сортировка по фамилии" << endl
 		<< "(8) Сохранение в Input.txt" << endl
-		//<< "(9) Сортировка выбором" << endl
+		<< "(9) Поиск по фамилии" << endl
 		<< "Ваш выбор: ";
 	cin >> _stateMenu;
 }
@@ -28,7 +28,7 @@ int main() {
 	// инициализация данных
 	int _actions,
 		amountOfData = 0;
-	string fileName;
+	string fileName, surname;
 
 	// массив данных
 	Data* d = new Data[amountOfData];
@@ -153,6 +153,7 @@ int main() {
 
 				if (amountOfData != 0) {
 					DataSorting(d, amountOfData);
+					cout << "Данные отсортированы!" << endl;
 				}
 				else
 					cout << "Данные пусты!" << endl;
@@ -163,6 +164,7 @@ int main() {
 
 				if (amountOfData != 0) {
 					DataSortingYbivanie(d, amountOfData);
+					cout << "Данные отсортированы!" << endl;
 				}
 				else
 					cout << "Данные пусты!" << endl;
@@ -173,6 +175,7 @@ int main() {
 
 				if (amountOfData != 0) {
 					DataSelectionSorting(d, amountOfData);
+					cout << "Данные отсортированы!" << endl;
 				}
 				else
 					cout << "Данные пусты!" << endl;
@@ -183,6 +186,7 @@ int main() {
 
 				if (amountOfData != 0) {
 					DataSelectionSortingYbivanie(d, amountOfData);
+					cout << "Данные отсортированы!" << endl;
 				}
 				else
 					cout << "Данные пусты!" << endl;
@@ -207,6 +211,22 @@ int main() {
 			if (amountOfData != 0) {
 				SavingData(d, amountOfData, fileName);
 				cout << "Данные сохранены!" << endl;
+			}
+			else
+				cout << "Данные пусты!" << endl;
+
+			system("pause");
+			system("cls");
+			Menu();
+			break;
+			////////////////////////////////////
+		case 9:
+			system("cls");
+
+			if (amountOfData != 0) {
+				cout << "Введите фамилию:" << endl;
+				cin >> surname;
+				DataBinarySearch(d, surname, amountOfData);
 			}
 			else
 				cout << "Данные пусты!" << endl;
