@@ -38,7 +38,7 @@ int main() {
 		{
 		case 1:
 			system("cls"); // очистка консоли
-			cout << "Ввод вручную или из Input.txt(1 - вручную, 2 - из Input.txt): ";
+			cout << "Ввод вручную, из Input.txt или из другого файла(1 - вручную, 2 - из Input.txt, 3 - другой файл): ";
 			cin >> _actions;
 			system("cls");
 
@@ -46,18 +46,21 @@ int main() {
 				//ввод вручную
 				DataEntry(d, amountOfData);
 			}
+
 			if (_actions == 2){
 				//ввод из файла
-				/*
-				В случае ввода файла с данными
-				cout << "" << endl;
-				cin >> fileName;//Input.txt
-				*/
 				ReadingData(d, amountOfData, "Input.txt");
 			}
 
-			if (_actions != 1 && _actions != 2) {
-				cout << "Данные введены неверно!" << endl;
+			if (_actions == 3) {
+				//ввод из собственного файла
+				cout << "Введите название файла: ";
+				cin >> fileName;
+				ReadingData(d, amountOfData, fileName);
+			}
+
+			if (_actions != 1 && _actions != 2 && _actions != 3) {
+				cout << "Неверно введен номер действия!" << endl;
 			}
 
 			system("pause"); // задержка консоли
@@ -219,10 +222,27 @@ int main() {
 			////////////////////////////////////
 		case 9:
 			system("cls");
+			
+			cout << "Вывод в Input.txt или в другой файл (1 - в Input.txt, 2 - в другой файл):" << endl;
+			cin >> _actions;
 
-			cout << "Введите название файла: ";
-			cin >> fileName;
-			//fileName = "Input.txt";
+			if (_actions == 1) {
+				fileName = "Input.txt";
+			}
+
+			if (_actions == 2) {
+				cout << "Введите название файла: ";
+				cin >> fileName;
+			}
+
+			if (_actions != 1 && _actions != 2) {
+				cout << "Неверно введен номер действия!" << endl;
+
+				system("pause");
+				system("cls");
+				Menu();
+				break;
+			}
 
 			if (amountOfData != 0) {
 				SavingData(d, amountOfData, fileName);
