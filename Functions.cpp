@@ -1,19 +1,19 @@
-#include "Functions.h"
+п»ї#include "Functions.h"
 
 void DataEntry(Data* (&d), int& n)
 {
-	cout << "Введите количество данных: ";
+	cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР°РЅРЅС‹С…: ";
 	cin >> n;
 
 	d = new Data[n];
 
 	for (int i = 0; i < n; i++) {
-		cout << "Введите ФИО: ";
+		cout << "Р’РІРµРґРёС‚Рµ Р¤РРћ: ";
 		cin >> d[i]._initial.surname;
 		cin >> d[i]._initial.name;
 		cin >> d[i]._initial.patronymic;
 
-		cout << "Введите дату (день, месяц, год): ";
+		cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ (РґРµРЅСЊ, РјРµСЃСЏС†, РіРѕРґ): ";
 		cin >> d[i]._date.day;
 		cin >> d[i]._date.month;
 		cin >> d[i]._date.year;
@@ -25,7 +25,7 @@ void DataEntry(Data* (&d), int& n)
 
 void ReadingData(Data* (&d), int& n, string fileName)
 {
-	//создаём поток для чтения
+	//СЃРѕР·РґР°С‘Рј РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ
 	ifstream reading(fileName);
 
 	if (reading) {
@@ -42,19 +42,19 @@ void ReadingData(Data* (&d), int& n, string fileName)
 			reading >> d[i]._date.month;
 			reading >> d[i]._date.year;
 		}
-		cout << "Данные считаны!" << endl;
+		cout << "Р”Р°РЅРЅС‹Рµ СЃС‡РёС‚Р°РЅС‹!" << endl;
 	}
 	else
-		cout << "Ошибка открытия файла!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!" << endl;
 	reading.close();
 }
 
 void Print(Data* d, int n)
 {
 	for (int i = 0; i < n; i++) {
-		cout << "Данные №" << i + 1 << endl;
-		cout << "ФИО: " << d[i]._initial.surname << " " << d[i]._initial.name << " " << d[i]._initial.patronymic << endl;
-		cout << "Дата: ";
+		cout << "Р”Р°РЅРЅС‹Рµ в„–" << i + 1 << endl;
+		cout << "Р¤РРћ: " << d[i]._initial.surname << " " << d[i]._initial.name << " " << d[i]._initial.patronymic << endl;
+		cout << "Р”Р°С‚Р°: ";
 		if (d[i]._date.day <= 9)
 			cout << "0" << d[i]._date.day << " ";
 		else
@@ -72,51 +72,51 @@ void DataChange(Data* (&d), int n)
 
 {
 	int _n;
-	cout << "Введите номер элемента (от 1 до " << n << "): ";
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° (РѕС‚ 1 РґРѕ " << n << "): ";
 	cin >> _n;
 	_n--;
 	system("cls");
 
-	// проверка, что ввели правильное значение
+	// РїСЂРѕРІРµСЂРєР°, С‡С‚Рѕ РІРІРµР»Рё РїСЂР°РІРёР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 	if (_n >= 0 && _n < n) {
-		cout << "Введите ФИО: ";
+		cout << "Р’РІРµРґРёС‚Рµ Р¤РРћ: ";
 		cin >> d[_n]._initial.surname;
 		cin >> d[_n]._initial.name;
 		cin >> d[_n]._initial.patronymic;
 
-		cout << "Введите дату: ";
+		cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ: ";
 		cin >> d[_n]._date.day;
 		cin >> d[_n]._date.month;
 		cin >> d[_n]._date.year;
 
 		system("cls");
 
-		cout << "Данные изменены!" << endl;
+		cout << "Р”Р°РЅРЅС‹Рµ РёР·РјРµРЅРµРЅС‹!" << endl;
 	}
 	else
-		cout << "Номер введён неверно!" << endl;
+		cout << "РќРѕРјРµСЂ РІРІРµРґС‘РЅ РЅРµРІРµСЂРЅРѕ!" << endl;
 }
 
 void DeleteData(Data* (&d), int& n)
 {
 	int _n;
-	cout << "Введите номер элемента (от 1 до " << n << "): ";
+	cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° (РѕС‚ 1 РґРѕ " << n << "): ";
 	cin >> _n;
 	_n--;
 	system("cls");
 
 	if (_n >= 0 && _n < n) {
-		// временный массив
+		// РІСЂРµРјРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ
 		Data* buf = new Data[n];
 
 		Copy(buf, d, n);
 
-		// выделяем новую память
+		// РІС‹РґРµР»СЏРµРј РЅРѕРІСѓСЋ РїР°РјСЏС‚СЊ
 		--n;
 		d = new Data[n];
 		int q = 0;
 
-		// заполняем неудаленные данные
+		// Р·Р°РїРѕР»РЅСЏРµРј РЅРµСѓРґР°Р»РµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 		for (int i = 0; i <= n; i++) {
 			if (i != _n) {
 				d[q] = buf[i];
@@ -126,10 +126,10 @@ void DeleteData(Data* (&d), int& n)
 
 		system("cls");
 		delete[]buf;
-		cout << "Данные удалены!" << endl;
+		cout << "Р”Р°РЅРЅС‹Рµ СѓРґР°Р»РµРЅС‹!" << endl;
 	}
 	else
-		cout << "Номер введён неверно!" << endl;
+		cout << "РќРѕРјРµСЂ РІРІРµРґС‘РЅ РЅРµРІРµСЂРЅРѕ!" << endl;
 }
 
 void Copy(Data* (&d_n), Data* (&d_o), int n)
@@ -152,37 +152,37 @@ void Copy(Data& d_n, Data& d_o)
 
 void AddDate(Data* (&d), int& n)
 {
-	//временный массив данных
+	//РІСЂРµРјРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
 	Data* buf;
 	buf = new Data[n];
 
-	//сохрание данных во временный массив
+	//СЃРѕС…СЂР°РЅРёРµ РґР°РЅРЅС‹С… РІРѕ РІСЂРµРјРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ
 	Copy(buf, d, n);
 
-	//выделяем новую память
+	//РІС‹РґРµР»СЏРµРј РЅРѕРІСѓСЋ РїР°РјСЏС‚СЊ
 	n++;
 	d = new Data[n];
 
-	//возвращаем данные
+	//РІРѕР·РІСЂР°С‰Р°РµРј РґР°РЅРЅС‹Рµ
 	Copy(d, buf, --n);
 
-	cout << "Введите ФИО: ";
+	cout << "Р’РІРµРґРёС‚Рµ Р¤РРћ: ";
 	cin >> d[n]._initial.surname >> d[n]._initial.name >> d[n]._initial.patronymic;
 
-	cout << "Введите дату: ";
+	cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ: ";
 	cin >> d[n]._date.day >> d[n]._date.month >> d[n]._date.year;
 
 	system("cls");
-	cout << "Данные добавлены!" << endl;
+	cout << "Р”Р°РЅРЅС‹Рµ РґРѕР±Р°РІР»РµРЅС‹!" << endl;
 	delete[]buf;
 }
 
 void DataSorting(Data* d, int n)
 {
-	//Временная переменная
+	//Р’СЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ
 	Data buf;
 
-	//сортировка методом пузырька
+	//СЃРѕСЂС‚РёСЂРѕРІРєР° РјРµС‚РѕРґРѕРј РїСѓР·С‹СЂСЊРєР°
 	for (int i = 0; i < n; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (d[i]._initial.surname > d[j]._initial.surname) {
@@ -199,7 +199,7 @@ void DataSelectionSorting(Data* (&d), int n)
 {
 	int smallest_id;
 
-	//сортировка выбором
+	//СЃРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј
 	for (int i = 0; i < n; i++) {
 		smallest_id = i;
 		for (int j = i + 1; j < n; j++) {
@@ -212,10 +212,10 @@ void DataSelectionSorting(Data* (&d), int n)
 }
 
 void DataSortingYbivanie(Data* d, int n) {
-	//Временная переменная
+	//Р’СЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ
 	Data buf;
 
-	//сортировка методом пузырька
+	//СЃРѕСЂС‚РёСЂРѕРІРєР° РјРµС‚РѕРґРѕРј РїСѓР·С‹СЂСЊРєР°
 	for (int i = 0; i < n; i++) {
 		for (int j = i + 1; j < n; j++) {
 			if (d[i]._initial.surname < d[j]._initial.surname) {
@@ -231,7 +231,7 @@ void DataSortingYbivanie(Data* d, int n) {
 void DataSelectionSortingYbivanie(Data* (&d), int n) {
 	int higher_id;
 
-	//сортировка выбором
+	//СЃРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј
 	for (int i = 0; i < n; i++) {
 		higher_id = i;
 		for (int j = i + 1; j < n; j++) {
@@ -248,15 +248,15 @@ void DataBinarySearch(Data* d, string value, int n) {
 	int left = 0;
 	int right = n;
 	
-	// сохраняем структуру во временном массиве
+	// СЃРѕС…СЂР°РЅСЏРµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ РІРѕ РІСЂРµРјРµРЅРЅРѕРј РјР°СЃСЃРёРІРµ
 	Data* buf;
 	buf = new Data[n];
 	Copy(buf, d, n);
 	
-	// сортировка структуры для бинарного поиска
+	// СЃРѕСЂС‚РёСЂРѕРІРєР° СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ Р±РёРЅР°СЂРЅРѕРіРѕ РїРѕРёСЃРєР°
 	DataSelectionSorting(d, n);
 
-	// бинарный поиск
+	// Р±РёРЅР°СЂРЅС‹Р№ РїРѕРёСЃРє
 	while (right >= left) {
 		mid = (left + right) / 2;
 		if (d[mid]._initial.surname == value) {
@@ -283,17 +283,17 @@ void DataBinarySearch(Data* d, string value, int n) {
 		if (d[mid]._initial.surname > value)
 			right = mid - 1;
 	}
-	cout << "Данных не найдено!" << endl;
+	cout << "Р”Р°РЅРЅС‹С… РЅРµ РЅР°Р№РґРµРЅРѕ!" << endl;
 	Copy(d, buf, n);
 }
 
 void SavingData(Data* d, int n, string fileName)
 {
-	// создается поток для записи
-	// открывает fileName и делает так, чтобы он был пустой
+	// СЃРѕР·РґР°РµС‚СЃСЏ РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё
+	// РѕС‚РєСЂС‹РІР°РµС‚ fileName Рё РґРµР»Р°РµС‚ С‚Р°Рє, С‡С‚РѕР±С‹ РѕРЅ Р±С‹Р» РїСѓСЃС‚РѕР№
 	ofstream record(fileName, ios::out);
 
-	// условие: если файл открылся
+	// СѓСЃР»РѕРІРёРµ: РµСЃР»Рё С„Р°Р№Р» РѕС‚РєСЂС‹Р»СЃСЏ
 	if (record) {
 		record << n << endl;
 
@@ -311,7 +311,7 @@ void SavingData(Data* d, int n, string fileName)
 		}
 	}
 	else
-		cout << "Ошибка открытия файла!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!" << endl;
 
 	record.close();
 }
